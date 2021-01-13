@@ -1,0 +1,25 @@
+.containner{
+  margin: 0 auto;
+  width: 50%;
+  padding: 10px;
+  color: Black;
+}
+.div-select {
+    width:100%;  /* Tamanho final do select */
+    overflow:hidden; /* Esconde o conteúdo que passar do tamanho especificado */
+}
+  
+.div-select{
+      background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-select.gif) no-repeat #354880;  /* Imagem de fundo (Seta) */
+      background-position:right;  /*Posição da imagem do background*/
+      width:100%; /* Tamanho do select, maior que o tamanho da div "div-select" */
+      height:100%; /* altura do select, importante para que tenha a mesma altura em todo os navegadores */
+      font-family:Arial, Helvetica, sans-serif; /* Fonte do Select */
+      font-size:12px; /* Tamanho da Fonte */
+      padding:10px 10px 10px 10px; /* Configurações de padding para posicionar o texto no campo */
+      color:#fff; /* Cor da Fonte */
+      text-indent: 0.01px; /* Remove seta padrão do FireFox */
+      text-overflow: "";  /* Remove seta padrão do FireFox */     
+      select::-ms-expand {display: none;} /* Remove seta padrão do IE*/
+  
+}

@@ -1,0 +1,11 @@
+.containner{
+  margin: 0 auto;
+  width: 50%;
+  padding: 10px;
+  color: Black;
+align-items: center;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;  
+}

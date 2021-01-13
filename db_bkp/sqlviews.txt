@@ -1,0 +1,19 @@
+
+//CRIACAO DE VIEWS COM GERAL CONJUNTO
+CREATE VIEW CONJUNTO AS select extract(year_month from `f`.`datavencimento`) AS `MesAno`,year(`f`.`datavencimento`) AS `year`,date_format(`f`.`datavencimento`,'%M') AS `month`,`fd`.`Razao` AS `fornecedor`,format(sum(`f`.`valorPr`),2,'de_DE') AS `soma` 
+from (((((`fatura` `f` join `loja` `lj`) join `fornecedor` `fd`) join `prazo` `pz`) join `operador` `op`) join `situacao` `st`)
+where `f`.`Operador_id` = `op`.`id` and `f`.`Fornecedor_id` = `fd`.`id` and `f`.`prazo_id` = `pz`.`id` and `f`.`Situacao_id` = `st`.`id` and `f`.`Loja_id` = `lj`.`id` and `f`.`Loja_id` = 9 and `f`.`Situacao_id` = 1 
+or `f`.`Operador_id` = `op`.`id` and `f`.`Fornecedor_id` = `fd`.`id` and `f`.`prazo_id` = `pz`.`id` and `f`.`Situacao_id` = `st`.`id` and `f`.`Loja_id` = `lj`.`id` and `f`.`Loja_id` = 9 and `f`.`Situacao_id` = 4
+or `f`.`Operador_id` = `op`.`id` and `f`.`Fornecedor_id` = `fd`.`id` and `f`.`prazo_id` = `pz`.`id` and `f`.`Situacao_id` = `st`.`id` and `f`.`Loja_id` = `lj`.`id` and `f`.`Loja_id` = 9 and `f`.`Situacao_id` = 7 
+group by extract(year_month from `f`.`datavencimento`),`fd`.`Razao` 
+order by extract(year_month from `f`.`datavencimento`)
+
+CREATE VIEW almponto AS select extract(year_month from `f`.`datavencimento`) AS `MesAno`,year(`f`.`datavencimento`) AS `year`,date_format(`f`.`datavencimento`,'%M') AS `month`,`fd`.`Razao` AS `fornecedor`,sum(`f`.`valorPr`) AS `soma` from (((((`fatura` `f` join `loja` `lj`) join `fornecedor` `fd`) join `prazo` `pz`) join `operador` `op`) join `situacao` `st`) 
+where `f`.`Operador_id` = `op`.`id` and `f`.`Fornecedor_id` = `fd`.`id` and `f`.`prazo_id` = `pz`.`id` and `f`.`Situacao_id` = `st`.`id` and `f`.`Loja_id` = `lj`.`id` and `f`.`Loja_id` = 10 and `f`.`Situacao_id` = 1 
+or `f`.`Operador_id` = `op`.`id` and `f`.`Fornecedor_id` = `fd`.`id` and `f`.`prazo_id` = `pz`.`id` and `f`.`Situacao_id` = `st`.`id` and `f`.`Loja_id` = `lj`.`id` and `f`.`Loja_id` = 10 and `f`.`Situacao_id` = 4 
+or `f`.`Operador_id` = `op`.`id` and `f`.`Fornecedor_id` = `fd`.`id` and `f`.`prazo_id` = `pz`.`id` and `f`.`Situacao_id` = `st`.`id` and `f`.`Loja_id` = `lj`.`id` and `f`.`Loja_id` = 10 and `f`.`Situacao_id` = 7 
+group by extract(year_month from `f`.`datavencimento`),`fd`.`Razao` 
+order by extract(year_month from `f`.`datavencimento`)
+
+
+sELECT EXTRACT(YEAR_MONTH FROM f.datavencimento) AS MesAno,YEAR(f.datavencimento) AS year,DATE_FORMAT(f.datavencimento,'%M') as month,fd.razao as fornecedor, sum(f.valorpr) as soma FROM fatura AS f, loja AS lj, fornecedor AS fd,prazo As pz, operador AS op,situacao as st WHERE f.operador_id=op.id AND f.fornecedor_id=fd.id AND f.prazo_id=pz.id AND f.situacao_id = st.id AND f.loja_id=lj.id AND f.Situacao_id=1 OR f.operador_id=op.id AND f.fornecedor_id=fd.id AND f.prazo_id=pz.id AND f.situacao_id = st.id AND f.loja_id=lj.id AND f.Situacao_id=4 OR f.operador_id=op.id AND f.fornecedor_id=fd.id AND f.prazo_id=pz.id AND f.situacao_id = st.id AND f.loja_id=lj.id AND f.Situacao_id=7 GROUP BY MesAno,fornecedor ORDER BY MesAno ASC

@@ -1,0 +1,14 @@
+.containner{
+	margin:1px auto;
+	width: 100%;
+	padding: 1px 1px 1px 1px;
+	font: 10px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.vencidos{
+	margin:1px auto;
+	width: 100%;
+	padding: 1px 1px 1px 1px;
+	font: 10px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color:red;
+}
