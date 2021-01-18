@@ -16,7 +16,7 @@ class FaturaDAO {
             $sql = "SELECT f.id as id,f.notafiscal AS 	notafiscal,f.duplicata AS duplicata,DATE_FORMAT(f.datacompra,'%d/%m/%Y') AS datacompra,DATE_FORMAT(f.datavencimento,'%d/%m/%Y') AS datavencimento,round(f.total,2) AS total,round(f.valorpr,2) AS valorpr ,f.numpr AS numpr,fd.razao AS fornecedor,st.stattus AS stattus,pz.descricao AS prazo,pz.qtdepr as qtdepr,lj.razao as loja
 					FROM  fatura AS f, loja AS lj, fornecedor AS fd,prazo As pz, operador AS op,situacao as st 
 					WHERE f.operador_id=op.id AND f.fornecedor_id=fd.id AND f.prazo_id=pz.id AND f.situacao_id = st.id AND f.loja_id=lj.id
-					ORDER BY f.id DESC LIMIT 100";
+					ORDER BY f.id DESC LIMIT 200";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             $fatura = $stmt->fetchAll(PDO::FETCH_ASSOC);

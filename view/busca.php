@@ -11,7 +11,7 @@ $search = "SELECT f.id as id,f.duplicata AS duplicata,f.notafiscal AS notafiscal
 		   FROM fatura AS f, loja AS lj, fornecedor AS fd,prazo As pz, operador AS op,situacao as st
 		   WHERE f.operador_id=op.id AND f.fornecedor_id=fd.id AND f.prazo_id=pz.id AND f.situacao_id = st.id AND f.loja_id=lj.id AND f.notafiscal like '%$busca%' OR f.operador_id=op.id AND f.fornecedor_id=fd.id AND f.prazo_id=pz.id AND f.situacao_id = st.id AND f.loja_id=lj.id AND fd.razao LIKE '%$busca%' OR f.operador_id=op.id AND f.fornecedor_id=fd.id AND f.prazo_id=pz.id AND f.situacao_id = st.id AND f.loja_id=lj.id AND f.duplicata LIKE '%$busca%'OR f.operador_id=op.id AND f.fornecedor_id=fd.id AND f.prazo_id=pz.id AND f.situacao_id = st.id AND f.loja_id=lj.id AND lj.razao LIKE '%$busca%' OR f.operador_id=op.id AND f.fornecedor_id=fd.id AND f.prazo_id=pz.id AND f.situacao_id = st.id AND f.loja_id=lj.id AND st.stattus LIKE '%$busca%' 
 		   ORDER BY f.fornecedor_id,f.duplicata,f.datavencimento ASC
-		   LIMIT 50";
+		   LIMIT 200";
 $retorno = mysqli_query($conn, $search);
 $row_cnt = mysqli_num_rows($retorno);
                       echo "<table class='table table-bordered table-hover table-striped table-responsive-sm list'>";
